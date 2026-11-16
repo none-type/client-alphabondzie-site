@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpha Bondzie | Sports & Remedial Massage Therapist</title>
+    <style>
+        /* =========================================
+           COLOR PALETTE FROM MOODBOARD
+           ========================================= */
+        :root {
+            --color-teal-light: #5abdb7;
+            --color-teal-main: #009c93;
+            --color-teal-dark: #006c6a;
+            --color-sand-light: #f7f5f0; /* Adjusted slightly lighter for bg */
+            --color-sand-main: #d3b47d;
+            --color-charcoal: #2b2b2b; /* Softer than pure black */
+            --color-white: #ffffff;
+            
+            --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-display: impact, "Arial Black", sans-serif; /* Placeholder for your blocky logo font */
+        }
+
+        /* =========================================
+           RESET & BASE STYLES
+           ========================================= */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--color-charcoal);
+            line-height: 1.6;
+            background-color: var(--color-sand-light);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            color: var(--color-charcoal);
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        /* Image Placeholder */
+        .img-placeholder {
+            background-color: #e5e0d5; /* Blend of sand/charcoal */
+            width: 100%;
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-weight: bold;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--color-teal-main);
+            color: var(--color-white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-teal-dark);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--color-charcoal);
+            border: 2px solid var(--color-charcoal);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-charcoal);
+            color: var(--color-white);
+        }
+
+        /* =========================================
+           HEADER
+           ========================================= */
+        .site-header {
+            padding: 25px 0;
+            background-color: var(--color-sand-light);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 28px;
+            color: var(--color-teal-main);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--color-charcoal);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .main-nav a:hover {
+            color: var(--color-teal-main);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--color-charcoal);
+        }
+
+        /* =========================================
+           HERO SECTION
+           ========================================= */
+        .hero {
+            padding: 40px 0 80px;
+        }
+
+        .hero-wrapper {
+            position: relative;
+            background-color: var(--color-sand-main);
+            /* REPLACE WITH YOUR HERO IMAGE LATER */
+            /* background-image: url('your-hero-image.jpg'); */
+            /* background-size: cover; */
+            /* background-position: center; */
+            border-radius: 20px;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            padding: 60px;
+            overflow: hidden;
+        }
+
+        /* Optional dark overlay if you add a bright image */
+        /* .hero-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(43, 43, 43, 0.4); 
+        } */
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 550px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+            color: var(--color-charcoal);
+            font-weight: 500;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* =========================================
+           BRIEF SECTION
+           ========================================= */
+        .brief-section {
+            padding: 80px 0;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .brief-section p {
+            font-size: 1.1rem;
+            color: #4a4a4a;
+        }
+
+        /* =========================================
+           SERVICES
+           ========================================= */
+        .services-section {
+            padding-bottom: 100px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            background: var(--color-white);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border-bottom: 4px solid var(--color-teal-main);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .service-card p {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        /* =========================================
+           TESTIMONIALS
+           ========================================= */
+        .testimonials-section {
+            padding: 100px 0;
+            background-color: var(--color-sand-main);
+            text-align: center;
+        }
+
+        .testimonial-card {
+            background: var(--color-white);
+            border-radius: 20px;
+            padding: 50px;
+            max-width: 800px;
+            margin: 40px auto 0;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            text-align: left;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: var(--color-teal-light);
+            flex-shrink: 0;
+            /* Placeholder for actual image */
+        }
+
+        .testimonial-card p {
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        /* =========================================
+           QUALIFICATIONS & CLINIC
+           ========================================= */
+        .split-section {
+            padding: 100px 0;
+        }
+
+        .qualifications {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 80px;
+            text-align: left;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--color-charcoal);
+            color: var(--color-white);
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .qual-list {
+            list-style: none;
+        }
+        
+        .qual-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .qual-list li::before {
+            content: '✓';
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background-color: var(--color-teal-main);
+            color: var(--color-white);
+            border-radius: 50%;
+            font-size: 0.8rem;
+        }
+
+        .clinic {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            background: var(--color-white);
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        /* =========================================
+           CONTACT FORM
+           ========================================= */
+        .contact-section {
+            padding: 100px 0;
+            background-color: var(--color-sand-main);
+        }
+
+        .contact-form {
+            max-width: 650px;
+            margin: 0 auto;
+            background: var(--color-white);
+            padding: 50px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 15px;
+            border: 2px solid #eaeaea;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-teal-main);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+
+        .checkbox-group input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--color-teal-main);
+        }
+
+        .contact-form .btn-primary {
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            padding: 16px;
+        }
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+        .site-footer {
+            padding: 50px 0;
+            background-color: var(--color-charcoal);
+            color: var(--color-white);
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: #a0a0a0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-teal-light);
+        }
+
+        .site-footer .logo {
+            color: var(--color-white);
+        }
+
+        /* =========================================
+           RESPONSIVE DESIGN
+           ========================================= */
+        @media (max-width: 900px) {
+            .hero-wrapper {
+                padding: 40px;
+                min-height: 500px;
+            }
+            
+            .clinic {
+                grid-template-columns: 1fr;
+                padding: 30px;
+            }
+
+            .testimonial-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none; 
+            }
+            .menu-toggle {
+                display: block; 
+            }
+
+            .hero-wrapper {
+                padding: 30px 20px;
+                text-align: center;
+            }
+
+            .button-group {
+                justify-content: center;
+            }
+
+            .qualifications {
+                flex-direction: column;
+                text-align: center;
+            }
+            .qual-list li {
+                justify-content: center;
+            }
+
+            .contact-form {
+                padding: 30px 20px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="logo">Alpha Bondzie</div>
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact" class="btn btn-secondary" style="padding: 8px 20px;">Book Now</a></li>
+                </ul>
+                <div class="menu-toggle">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="container">
+                <!-- Replace background color of hero-wrapper with an image later -->
+                <div class="hero-wrapper">
+                    <div class="hero-content">
+                        <h1>Restore. Recover. Perform.</h1>
+                        <p>Expert sports and remedial massage therapy tailored to keep active bodies moving pain-free.</p>
+                        <div class="button-group">
+                            <a href="#contact" class="btn btn-primary">Book a Session</a>
+                            <a href="#services" class="btn btn-secondary">View Services</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROBLEM / SOLUTION -->
+        <section class="brief-section container">
+            <h2>Targeted Recovery</h2>
+            <p>Whether you are recovering from a sports injury or dealing with chronic tension, my goal is to bridge the gap between clinical therapy and physical relief. I provide a calm, professional space dedicated to helping you get back to doing what you love.</p>
+        </section>
+
+        <!-- SERVICES -->
+        <section id="services" class="services-section container">
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="img-placeholder">Image</div>
+                    <h3>Sports Massage</h3>
+                    <p>Pre and post-event treatments designed to enhance performance, reduce recovery time, and prevent injury.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="img-placeholder">Image</div>
+                    <h3>Deep Tissue</h3>
+                    <p>Targeted pressure to release chronic muscle tension and break down scar tissue from old injuries.</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="img-placeholder">Image</div>
+                    <h3>Injury Rehabilitation</h3>
+                    <p>Collaborative treatment plans to help you safely return to activity after strains, sprains, or surgeries.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS -->
+        <section class="testimonials-section">
+            <div class="container">
+                <h2>Client Feedback</h2>
+                <div class="testimonial-card">
+                    <div class="avatar"></div>
+                    <div>
+                        <p>"After struggling with a recurring hamstring issue for months, a few sessions with Alpha made a massive difference. The clinical yet calming approach is exactly what I needed."</p>
+                        <p style="margin-top: 15px; font-weight: bold; font-style: normal; font-size: 0.9rem; color: var(--color-teal-main);">— Local Athlete</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUALIFICATIONS & CLINIC -->
+        <section class="split-section container">
+            <!-- Qualifications -->
+            <div class="qualifications">
+                <div class="avatar" style="width: 150px; height: 150px; background-color: var(--color-sand-main);"></div>
+                <div>
+                    <span class="badge">CERTIFIED THERAPIST</span>
+                    <ul class="qual-list">
+                        <li>Level 4 Sports Massage Therapy</li>
+                        <li>Deep Tissue Certification</li>
+                        <li>First Aid & CPR Trained</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Clinic -->
+            <div class="clinic">
+                <div>
+                    <h2>The Clinic</h2>
+                    <p style="margin-top: 15px; color: #555;">My treatment space is designed to be a sanctuary of physical relief. It's a clean, professional, and grounding environment where we can focus entirely on your recovery and well-being.</p>
+                </div>
+                <div class="img-placeholder" style="aspect-ratio: 1/1;">Clinic Image</div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 style="text-align: center; margin-bottom: 40px;">Book Your Session</h2>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="Jane Doe">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="jane@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" placeholder="07123 456789">
+                    </div>
+                    <div class="form-group">
+                        <label>Briefly describe your injury or goal</label>
+                        <textarea rows="4" placeholder="E.g., Lower back pain from deadlifting..."></textarea>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="consent">
+                        <label for="consent">I agree to be contacted regarding my enquiry</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Request</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <ul class="footer-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">LinkedIn</a></li>
+            </ul>
+            <div class="logo">Alpha Bondzie</div>
+        </div>
+    </footer>
+
+</body>
+</html>
