@@ -6,7 +6,7 @@
     <title>Alpha Bondzie | Sports & Remedial Massage Therapist</title>
     <style>
         /* =========================================
-           COLOR PALETTE FROM MOODBOARD
+           COLOR PALETTE & TYPOGRAPHY
            ========================================= */
         :root {
             --color-teal-light: #5abdb7;
@@ -63,20 +63,6 @@
             font-weight: 800;
         }
 
-        /* Image Placeholder */
-        .img-placeholder {
-            background-color: #e5e0d5;
-            width: 100%;
-            aspect-ratio: 4/3;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-weight: bold;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
         /* Buttons */
         .btn {
             display: inline-block;
@@ -87,6 +73,7 @@
             transition: all 0.3s ease;
             text-align: center;
             letter-spacing: 0.5px;
+            border: 2px solid transparent;
         }
 
         .btn-primary {
@@ -100,13 +87,13 @@
 
         .btn-secondary {
             background-color: transparent;
-            color: var(--color-charcoal);
-            border: 2px solid var(--color-charcoal);
+            color: var(--color-white);
+            border: 2px solid var(--color-white);
         }
 
         .btn-secondary:hover {
-            background-color: var(--color-charcoal);
-            color: var(--color-white);
+            background-color: var(--color-white);
+            color: var(--color-charcoal);
         }
 
         /* =========================================
@@ -158,41 +145,52 @@
         }
 
         /* =========================================
-           HERO SECTION (UPDATED)
+           HERO SECTION (FULL WIDTH BANNER)
            ========================================= */
         .hero {
-            padding: 20px 0 80px;
+            position: relative;
+            width: 100%;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            /* Background Image & Gradient Overlay */
+            background-image: 
+                linear-gradient(to right, rgba(43, 43, 43, 0.9) 0%, rgba(43, 43, 43, 0.4) 100%),
+                url('./assets/images/pexels-action-1834465_1920.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 100px 0;
         }
 
-        .hero-wrapper {
+        .hero-container {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Split layout */
-            background-color: var(--color-sand-main);
-            border-radius: 20px;
-            overflow: hidden;
-            min-height: 600px;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
         }
 
         .hero-content {
-            padding: 80px 60px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            color: var(--color-white);
+            max-width: 600px;
         }
 
-        .hero h1 {
-            font-size: clamp(2.5rem, 4vw, 3.8rem);
+        .hero-content h1 {
+            color: var(--color-white);
+            font-size: clamp(3rem, 5vw, 4.5rem);
             margin-bottom: 20px;
             font-weight: 800;
             letter-spacing: -1px;
+            line-height: 1.1;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 35px;
-            color: var(--color-charcoal);
-            font-weight: 500;
-            max-width: 90%;
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            color: #eaeaea;
+            font-weight: 400;
         }
 
         .button-group {
@@ -201,29 +199,29 @@
             flex-wrap: wrap;
         }
 
-        /* This is the placeholder box for the Hero Image */
-        .hero-image {
-            background-color: #e5e0d5; /* Slightly darker sand for contrast */
+        /* Floating Feature Image */
+        .hero-feature-img {
             width: 100%;
-            height: 100%;
-            position: relative;
+            height: auto;
+            aspect-ratio: 4/3;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            border: 4px solid var(--color-white);
+            transform: translateY(20px); /* Slight offset for modern look */
         }
 
-        .hero-image::after {
-            content: 'Hero Image Placeholder';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: rgba(0,0,0,0.3);
-            font-weight: bold;
+        .hero-feature-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* =========================================
            BRIEF SECTION
            ========================================= */
         .brief-section {
-            padding: 80px 0;
+            padding: 100px 0 80px;
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
@@ -254,14 +252,29 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.04);
             border-bottom: 5px solid var(--color-teal-main);
             transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
 
         .service-card:hover {
             transform: translateY(-8px);
         }
 
+        .service-img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .service-card h3 {
-            margin-top: 20px;
             margin-bottom: 10px;
             font-size: 1.4rem;
         }
@@ -293,12 +306,21 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.08);
         }
 
+        /* Updated Avatar CSS to handle the SVG */
         .avatar {
             width: 100px;
             height: 100px;
             border-radius: 50%;
             background-color: var(--color-teal-light);
             flex-shrink: 0;
+            overflow: hidden;
+            border: 2px solid var(--color-teal-main);
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .testimonial-card p {
@@ -369,6 +391,13 @@
             background: var(--color-white);
             padding: 50px;
             border-radius: 20px;
+        }
+
+        .clinic-img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 12px;
+            overflow: hidden;
         }
 
         /* =========================================
@@ -480,28 +509,28 @@
         /* =========================================
            RESPONSIVE DESIGN
            ========================================= */
-        @media (max-width: 900px) {
-            .hero-wrapper {
+        @media (max-width: 992px) {
+            .hero-container {
                 grid-template-columns: 1fr;
-            }
-            
-            .hero-content {
-                padding: 60px 40px;
                 text-align: center;
             }
 
-            .hero p {
-                margin: 0 auto 35px auto;
+            .hero-content {
+                margin: 0 auto;
             }
 
             .button-group {
                 justify-content: center;
             }
 
-            .hero-image {
-                min-height: 400px;
+            .hero-feature-img {
+                max-width: 600px;
+                margin: 40px auto 0;
+                transform: none;
             }
-            
+        }
+
+        @media (max-width: 900px) {
             .clinic {
                 grid-template-columns: 1fr;
                 padding: 30px;
@@ -520,6 +549,11 @@
             }
             .menu-toggle {
                 display: block; 
+            }
+
+            .hero {
+                min-height: 60vh;
+                padding: 60px 0;
             }
 
             .qualifications {
@@ -556,7 +590,7 @@
                     <li><a href="#">Home</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#services">Services</a></li>
-                    <li><a href="#contact" class="btn btn-secondary" style="padding: 8px 20px;">Book Now</a></li>
+                    <li><a href="#contact" class="btn btn-secondary" style="padding: 8px 20px; color: var(--color-charcoal); border-color: var(--color-charcoal);">Book Now</a></li>
                 </ul>
                 <div class="menu-toggle">☰</div>
             </nav>
@@ -566,20 +600,18 @@
     <main>
         <!-- HERO SECTION -->
         <section class="hero">
-            <div class="container">
-                <div class="hero-wrapper">
-                    <div class="hero-content">
-                        <h1>Restore. Recover. Perform.</h1>
-                        <p>Expert sports and remedial massage therapy tailored to keep active bodies moving pain-free.</p>
-                        <div class="button-group">
-                            <a href="#contact" class="btn btn-primary">Book a Session</a>
-                            <a href="#services" class="btn btn-secondary">View Services</a>
-                        </div>
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <h1>Restore. Recover. Perform.</h1>
+                    <p>Expert sports and remedial massage therapy tailored to keep active bodies moving pain-free.</p>
+                    <div class="button-group">
+                        <a href="#contact" class="btn btn-primary">Book a Session</a>
+                        <a href="#services" class="btn btn-secondary">View Services</a>
                     </div>
-                    <!-- REPLACE THIS DIV WITH YOUR IMAGE TAG -->
-                    <div class="hero-image">
-                        <!-- Example: <img src="path-to-your-image.jpg" alt="Massage therapy"> -->
-                    </div>
+                </div>
+                <!-- NEW FLOATING FEATURE IMAGE -->
+                <div class="hero-feature-img">
+                    <img src="./assets/images/chaplins77-back-pain-2402708.jpg" alt="Therapist using massage tool on patient's back">
                 </div>
             </div>
         </section>
@@ -595,19 +627,25 @@
             <div class="services-grid">
                 <!-- Service 1 -->
                 <div class="service-card">
-                    <div class="img-placeholder">Image</div>
+                    <div class="service-img">
+                        <img src="./assets/images/boundsmarnie-massage-1596790_1920.jpg" alt="Sports Massage">
+                    </div>
                     <h3>Sports Massage</h3>
                     <p>Pre and post-event treatments designed to enhance performance, reduce recovery time, and prevent injury.</p>
                 </div>
                 <!-- Service 2 -->
                 <div class="service-card">
-                    <div class="img-placeholder">Image</div>
+                    <div class="service-img">
+                        <img src="./assets/images/massagenerds-massage-2277448_1920.jpg" alt="Deep Tissue Massage">
+                    </div>
                     <h3>Deep Tissue</h3>
                     <p>Targeted pressure to release chronic muscle tension and break down scar tissue from old injuries.</p>
                 </div>
                 <!-- Service 3 -->
                 <div class="service-card">
-                    <div class="img-placeholder">Image</div>
+                    <div class="service-img">
+                        <img src="./assets/images/yury-kirillov-pbUWW-CBoqY-unsplash.jpg" alt="Injury Rehabilitation">
+                    </div>
                     <h3>Injury Rehabilitation</h3>
                     <p>Collaborative treatment plans to help you safely return to activity after strains, sprains, or surgeries.</p>
                 </div>
@@ -619,7 +657,10 @@
             <div class="container">
                 <h2>Client Feedback</h2>
                 <div class="testimonial-card">
-                    <div class="avatar"></div>
+                    <!-- UPDATED AVATAR IMAGE -->
+                    <div class="avatar">
+                        <img src="./assets/images/wanderercreative-blank-profile-picture-973460.svg" alt="Client Profile Picture">
+                    </div>
                     <div>
                         <p>"After struggling with a recurring hamstring issue for months, a few sessions with Alpha made a massive difference. The clinical yet calming approach is exactly what I needed."</p>
                         <p style="margin-top: 15px; font-weight: bold; font-style: normal; font-size: 0.95rem; color: var(--color-teal-main);">— Local Athlete</p>
@@ -632,7 +673,10 @@
         <section class="split-section container">
             <!-- Qualifications -->
             <div class="qualifications">
-                <div class="avatar" style="width: 150px; height: 150px; background-color: var(--color-sand-main);"></div>
+                <!-- UPDATED AVATAR IMAGE -->
+                <div class="avatar" style="width: 150px; height: 150px; background-color: var(--color-sand-main);">
+                    <img src="./assets/images/wanderercreative-blank-profile-picture-973460.svg" alt="Therapist Profile Picture">
+                </div>
                 <div>
                     <span class="badge">CERTIFIED THERAPIST</span>
                     <ul class="qual-list">
@@ -649,7 +693,9 @@
                     <h2>The Clinic</h2>
                     <p style="margin-top: 15px; color: #555; font-size: 1.05rem;">My treatment space is designed to be a sanctuary of physical relief. It's a clean, professional, and grounding environment where we can focus entirely on your recovery and well-being.</p>
                 </div>
-                <div class="img-placeholder" style="aspect-ratio: 1/1;">Clinic Image</div>
+                <div class="clinic-img">
+                    <img src="./assets/images/spabielenda-reception-5078879_1920.jpg" alt="The Clinic Reception">
+                </div>
             </div>
         </section>
 
@@ -671,8 +717,8 @@
                         <input type="tel" placeholder="07123 456789">
                     </div>
                     <div class="form-group">
-                        <label>Briefly describe your injury or goal</label>
-                        <textarea rows="4" placeholder="E.g., Lower back pain from deadlifting..." required></textarea>
+                        <label>How can I help you?</label>
+                        <textarea rows="4" placeholder="Please describe your injury, goal, or any specific areas of tension..." required></textarea>
                     </div>
                     <div class="checkbox-group">
                         <input type="checkbox" id="consent" required>
